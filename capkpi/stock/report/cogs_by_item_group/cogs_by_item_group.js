@@ -1,0 +1,31 @@
+// Copyright (c) 2016, Finergy Reporting Solutions SAS and contributors
+// For license information, please see license.txt
+/* eslint-disable */
+
+
+finergy.query_reports["COGS By Item Group"] = {
+	filters: [
+    {
+      label: __("Company"),
+      fieldname: "company",
+      fieldtype: "Link",
+      options: "Company",
+      mandatory: true,
+      default: finergy.defaults.get_user_default("Company"),
+    },
+    {
+      label: __("From Date"),
+      fieldname: "from_date",
+      fieldtype: "Date",
+      mandatory: true,
+      default: finergy.datetime.year_start(),
+    },
+    {
+      label: __("To Date"),
+      fieldname: "to_date",
+      fieldtype: "Date",
+      mandatory: true,
+      default: finergy.datetime.get_today(),
+    },
+	]
+};

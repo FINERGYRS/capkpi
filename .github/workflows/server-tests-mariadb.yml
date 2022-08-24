@@ -18,7 +18,7 @@ on:
       user:
         description: 'user'
         required: true
-        default: 'frappe'
+        default: 'finergy'
         type: string
       branch:
         description: 'Branch name'
@@ -116,21 +116,21 @@ jobs:
         env:
           DB: mariadb
           TYPE: server
-          FRAPPE_USER: ${{ github.event.inputs.user }}
-          FRAPPE_BRANCH: ${{ github.event.inputs.branch }}
+          FINERGY_USER: ${{ github.event.inputs.user }}
+          FINERGY_BRANCH: ${{ github.event.inputs.branch }}
 
       - name: Run Tests
-        run: cd ~/frappe-bench/ && bench --site test_site run-parallel-tests --app erpnext --use-orchestrator --with-coverage
+        run: cd ~/finergy-bench/ && bench --site test_site run-parallel-tests --app capkpi --use-orchestrator --with-coverage
         env:
           TYPE: server
           CI_BUILD_ID: ${{ github.run_id }}
-          ORCHESTRATOR_URL: http://test-orchestrator.frappe.io
+          ORCHESTRATOR_URL: http://test-orchestrator.finergy.io
 
       - name: Upload coverage data
         uses: actions/upload-artifact@v3
         with:
           name: coverage-${{ matrix.container }}
-          path: /home/runner/frappe-bench/sites/coverage.xml
+          path: /home/runner/finergy-bench/sites/coverage.xml
 
   coverage:
     name: Coverage Wrap Up

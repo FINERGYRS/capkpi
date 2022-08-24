@@ -91,7 +91,7 @@ jobs:
 
       - name: Install
         run: |
-          pip install frappe-bench
+          pip install finergy-bench
           pyenv global $(pyenv versions | grep '3.10')
           bash ${GITHUB_WORKSPACE}/.github/helper/install.sh
         env:
@@ -100,12 +100,12 @@ jobs:
 
       - name: Run Patch Tests
         run: |
-          cd ~/frappe-bench/
-          wget https://erpnext.com/files/v10-erpnext.sql.gz
-          bench --site test_site --force restore ~/frappe-bench/v10-erpnext.sql.gz
+          cd ~/finergy-bench/
+          wget https://capkpi.com/files/v10-capkpi.sql.gz
+          bench --site test_site --force restore ~/finergy-bench/v10-capkpi.sql.gz
 
-          git -C "apps/frappe" remote set-url upstream https://github.com/frappe/frappe.git
-          git -C "apps/erpnext" remote set-url upstream https://github.com/frappe/erpnext.git
+          git -C "apps/finergy" remote set-url upstream https://github.com/FINERGYRS/finergy.git
+          git -C "apps/capkpi" remote set-url upstream https://github.com/FINERGYRS/capkpi.git
 
           pyenv global $(pyenv versions | grep '3.7')
           for version in $(seq 12 13)
@@ -113,30 +113,30 @@ jobs:
               echo "Updating to v$version"
               branch_name="version-$version-hotfix"
 
-              git -C "apps/frappe" fetch --depth 1 upstream $branch_name:$branch_name
-              git -C "apps/erpnext" fetch --depth 1 upstream $branch_name:$branch_name
+              git -C "apps/finergy" fetch --depth 1 upstream $branch_name:$branch_name
+              git -C "apps/capkpi" fetch --depth 1 upstream $branch_name:$branch_name
 
-              git -C "apps/frappe" checkout -q -f $branch_name
-              git -C "apps/erpnext" checkout -q -f $branch_name
+              git -C "apps/finergy" checkout -q -f $branch_name
+              git -C "apps/capkpi" checkout -q -f $branch_name
 
-              rm -rf ~/frappe-bench/env
+              rm -rf ~/finergy-bench/env
               bench setup env
               bench pip install -e ./apps/payments
-              bench pip install -e ./apps/erpnext
+              bench pip install -e ./apps/capkpi
 
               bench --site test_site migrate
           done
 
 
           echo "Updating to latest version"
-          git -C "apps/frappe" checkout -q -f "${GITHUB_BASE_REF:-${GITHUB_REF##*/}}"
-          git -C "apps/erpnext" checkout -q -f "$GITHUB_SHA"
+          git -C "apps/finergy" checkout -q -f "${GITHUB_BASE_REF:-${GITHUB_REF##*/}}"
+          git -C "apps/capkpi" checkout -q -f "$GITHUB_SHA"
 
           pyenv global $(pyenv versions | grep '3.10')
-          rm -rf ~/frappe-bench/env
+          rm -rf ~/finergy-bench/env
           bench -v setup env
           bench pip install -e ./apps/payments
-          bench pip install -e ./apps/erpnext
+          bench pip install -e ./apps/capkpi
 
           bench --site test_site migrate
           bench --site test_site install-app payments
