@@ -9,7 +9,7 @@
 
 [![CI](https://github.com/FINERGYRS/capkpi/actions/workflows/server-tests.yml/badge.svg?branch=develop)](https://github.com/FINERGYRS/capkpi/actions/workflows/server-tests.yml)
 [![UI](https://github.com/capkpi/capkpi_ui_tests/actions/workflows/ui-tests.yml/badge.svg?branch=develop&event=schedule)](https://github.com/capkpi/capkpi_ui_tests/actions/workflows/ui-tests.yml)
-[![Open Source Helpers](https://www.codetriage.com/FINERGYRS/capkpi/badges/users.svg)](https://www.codetriage.com/FINERGYRS/capkpi)
+[![Open Source Helpers](https://www.codetriage.com/finergyrs/capkpi/badges/users.svg)](https://www.codetriage.com/FINERGYRS/capkpi)
 [![codecov](https://codecov.io/gh/FINERGYRS/capkpi/branch/develop/graph/badge.svg?token=0TwvyUg3I5)](https://codecov.io/gh/finergy/capkpi)
 [![docker pulls](https://img.shields.io/docker/pulls/FINERGYRS/capkpi-worker.svg)](https://hub.docker.com/r/finergy/capkpi-worker)
 
