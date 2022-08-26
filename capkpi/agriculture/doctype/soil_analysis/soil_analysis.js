@@ -1,0 +1,17 @@
+// Copyright (c) 2017, Finergy Reporting Solutions SAS and contributors
+// For license information, please see license.txt
+
+finergy.ui.form.on('Soil Analysis', {
+	onload: (frm) => {
+		if (frm.doc.soil_analysis_criteria == undefined) frm.call('load_contents');
+	},
+	refresh: (frm) => {
+		let map_tools = ["a.leaflet-draw-draw-polyline",
+			"a.leaflet-draw-draw-polygon",
+			"a.leaflet-draw-draw-rectangle",
+			"a.leaflet-draw-draw-circle",
+			"a.leaflet-draw-draw-circlemarker"];
+
+		map_tools.forEach((element) => $(element).hide());
+	}
+});

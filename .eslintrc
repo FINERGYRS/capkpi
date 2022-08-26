@@ -59,9 +59,9 @@
 	},
 	"root": true,
 	"globals": {
-		"frappe": true,
+		"finergy": true,
 		"Vue": true,
-		"erpnext": true,
+		"capkpi": true,
 		"hub": true,
 		"$": true,
 		"jQuery": true,

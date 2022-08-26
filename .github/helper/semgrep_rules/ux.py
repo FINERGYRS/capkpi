@@ -1,30 +1,30 @@
-import frappe
-from frappe import _, msgprint, throw
+import finergy
+from finergy import _, msgprint, throw
 
-# ruleid: frappe-missing-translate-function-python
+# ruleid: finergy-missing-translate-function-python
 throw("Error Occured")
 
-# ruleid: frappe-missing-translate-function-python
-frappe.throw("Error Occured")
+# ruleid: finergy-missing-translate-function-python
+finergy.throw("Error Occured")
 
-# ruleid: frappe-missing-translate-function-python
-frappe.msgprint("Useful message")
+# ruleid: finergy-missing-translate-function-python
+finergy.msgprint("Useful message")
 
-# ruleid: frappe-missing-translate-function-python
+# ruleid: finergy-missing-translate-function-python
 msgprint("Useful message")
 
 
-# ok: frappe-missing-translate-function-python
+# ok: finergy-missing-translate-function-python
 translatedmessage = _("Hello")
 
-# ok: frappe-missing-translate-function-python
+# ok: finergy-missing-translate-function-python
 throw(translatedmessage)
 
-# ok: frappe-missing-translate-function-python
+# ok: finergy-missing-translate-function-python
 msgprint(translatedmessage)
 
-# ok: frappe-missing-translate-function-python
+# ok: finergy-missing-translate-function-python
 msgprint(_("Helpful message"))
 
-# ok: frappe-missing-translate-function-python
-frappe.throw(_("Error occured"))
+# ok: finergy-missing-translate-function-python
+finergy.throw(_("Error occured"))
