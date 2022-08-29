@@ -3,7 +3,7 @@
 
 import click
 import finergy
-from finergy-rs.commands import get_site, pass_context
+from finergy.commands import get_site, pass_context
 
 
 def call_command(cmd, context):
@@ -21,7 +21,7 @@ def call_command(cmd, context):
 @pass_context
 def make_demo(context, site, domain="Manufacturing", days=100, resume=False, reinstall=False):
 	"Reinstall site and setup demo"
-	from finergy-rs.commands.site import _reinstall
+	from finergy.commands.site import _reinstall
 	from finergy.installer import install_app
 
 	site = get_site(context)
